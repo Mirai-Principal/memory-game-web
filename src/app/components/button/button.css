@@ -1,0 +1,22 @@
+.btn-frizac {
+  background: linear-gradient(90deg, #F17AA7 0%, #EE76AC 100%);
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.9rem 3rem;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  box-shadow: 0 4px 15px rgba(238, 118, 172, 0.45);
+  font-family: inherit;
+}
+
+@media (max-width: 640px) {
+  .btn-frizac {
+    padding: 0.75rem 2.2rem;
+    font-size: 1.25rem;
+  }
+}
