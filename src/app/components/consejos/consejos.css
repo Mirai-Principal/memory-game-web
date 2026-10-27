@@ -174,3 +174,22 @@
     gap: 0.55rem;
   }
 }
+
+/* Adaptación para pantalla horizontal (Landscape) */
+@media (orientation: landscape) {
+  .consejos-screen {
+    padding: 0 2rem 2rem;
+  }
+
+  .consejos-content-container {
+    max-width: 900px;
+  }
+
+  .consejos-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.95rem;
+    width: 100%;
+  }
+}
+
