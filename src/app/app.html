@@ -9,7 +9,7 @@
       />
 
       <!-- Botón para iniciar el juego -->
-      <div class="absolute bottom-[6%] w-full flex justify-center px-6 z-10">
+      <div class="absolute bottom-[8%] w-full flex justify-center px-6 z-10">
         <app-button
           text="Jugar ¡ahora!"
           (clicked)="openStartModal()"
@@ -109,7 +109,7 @@
         </div>
 
         <!-- Cuadrícula 4 filas x 3 columnas (12 cartas en total) -->
-        <div class="grid grid-cols-3 grid-rows-4 gap-2 sm:gap-5 w-full max-w-[80%] aspect-[3/4] my-auto items-center justify-center">
+        <div class="grid grid-cols-3 grid-rows-4 gap-2 sm:gap-5 w-full max-w-[75%] aspect-[3/4] my-auto items-center justify-center">
           @for (card of cards(); track card.id) {
             <app-card
               [imageSrc]="card.imageSrc"
@@ -123,7 +123,7 @@
         </div>
 
         <!-- Botón Ver Consejos ubicado bajo la cuadrícula de cartas -->
-        <div class="w-full flex justify-center pb-1 shrink-0">
+        <div class="w-full flex justify-center pb-10 shrink-0">
           <app-button
             text="Ver Consejos"
             size="md"
