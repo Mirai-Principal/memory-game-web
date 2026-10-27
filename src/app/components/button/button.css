@@ -44,3 +44,22 @@
   }
 }
 
+/* Modo paisaje compacto para móviles apaisados donde la altura es reducida por la barra de dirección */
+@media (orientation: landscape) and (max-height: 520px) {
+  .btn-lg {
+    padding: 0.35rem 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .btn-md {
+    padding: 0.3rem 1.2rem;
+    font-size: 0.92rem;
+  }
+
+  .btn-sm {
+    padding: 0.22rem 0.85rem;
+    font-size: 0.82rem;
+  }
+}
+
+

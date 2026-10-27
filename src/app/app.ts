@@ -38,6 +38,67 @@ export class App {
   protected readonly matchedPairs = signal<number>(0);
   protected readonly isChecking = signal<boolean>(false);
 
+  // Estado de pantalla completa
+  protected readonly isFullscreen = signal<boolean>(false);
+
+  constructor() {
+    if (typeof document !== 'undefined') {
+      const updateState = () => {
+        const active = !!(
+          document.fullscreenElement ||
+          (document as any).webkitFullscreenElement ||
+          (document as any).mozFullScreenElement ||
+          (document as any).msFullscreenElement
+        );
+        this.isFullscreen.set(active);
+      };
+
+      document.addEventListener('fullscreenchange', updateState);
+      document.addEventListener('webkitfullscreenchange', updateState);
+      document.addEventListener('mozfullscreenchange', updateState);
+      document.addEventListener('MSFullscreenChange', updateState);
+    }
+  }
+
+  /**
+   * Alterna entre el modo pantalla completa y normal
+   */
+  toggleFullscreen(): void {
+    if (typeof document === 'undefined') return;
+
+    const doc = document as any;
+    const docEl = document.documentElement as any;
+
+    const isFull = !!(
+      doc.fullscreenElement ||
+      doc.webkitFullscreenElement ||
+      doc.mozFullScreenElement ||
+      doc.msFullscreenElement
+    );
+
+    if (!isFull) {
+      if (docEl.requestFullscreen) {
+        docEl.requestFullscreen().catch((err: any) => console.warn('Error al activar fullscreen:', err));
+      } else if (docEl.webkitRequestFullscreen) {
+        docEl.webkitRequestFullscreen();
+      } else if (docEl.mozRequestFullScreen) {
+        docEl.mozRequestFullScreen();
+      } else if (docEl.msRequestFullscreen) {
+        docEl.msRequestFullscreen();
+      }
+    } else {
+      if (doc.exitFullscreen) {
+        doc.exitFullscreen().catch((err: any) => console.warn('Error al salir de fullscreen:', err));
+      } else if (doc.webkitExitFullscreen) {
+        doc.webkitExitFullscreen();
+      } else if (doc.mozCancelFullScreen) {
+        doc.mozCancelFullScreen();
+      } else if (doc.msExitFullscreen) {
+        doc.msExitFullscreen();
+      }
+    }
+  }
+
   private selectedCards: MemoryCard[] = [];
 
   /**

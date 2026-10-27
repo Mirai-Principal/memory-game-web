@@ -1,11 +1,11 @@
 <div
-  class="fixed inset-0 bg-[#002D54]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+  class="fixed inset-0 bg-[#002D54]/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-fade-in"
   (click)="onBackdropClick($event)"
   role="dialog"
   aria-modal="true"
 >
   <div
-    class="modal-card rounded-3xl p-5 sm:p-6 flex flex-col items-center text-center shadow-2xl w-full max-h-[90vh]"
+    class="modal-card rounded-3xl p-3 sm:p-6 flex flex-col items-center text-center shadow-2xl w-full max-h-[92dvh] max-h-[92vh]"
     [class]="maxWidthClass()"
   >
     @if (headerLayout() === 'row') {
@@ -67,7 +67,7 @@
     </div>
 
     <!-- Acciones / Botones -->
-    <div class="mt-4 sm:mt-5 flex flex-col gap-2.5 w-full items-center shrink-0">
+    <div class="mt-2 sm:mt-4 flex flex-col gap-1.5 sm:gap-2.5 w-full items-center shrink-0">
       @if (primaryButtonText()) {
         <app-button
           [text]="primaryButtonText()"
