@@ -29,9 +29,54 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-.modal-match-title { color: #003087; font-weight: 900; }
-.modal-match-img { filter: drop-shadow(0 6px 18px rgba(0, 48, 135, 0.22)); }
-.modal-match-subtitle { color: #009EE2; font-weight: 800; }
+/* Modal de Pareja Encontrada (Layout horizontal en fila):
+   Diseño con amplio padding superior y proporciones cuadradas y armoniosas (no excesivamente rectangular) */
+.modal-card-row {
+  width: min(92vw, 430px) !important;
+  max-width: 430px !important;
+  height: auto !important;
+  min-height: auto !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.25rem !important;
+  padding-left: 1.35rem !important;
+  padding-right: 1.35rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+.modal-card-row .modal-actions {
+  margin-top: 0.6rem !important;
+  margin-bottom: 0.15rem !important;
+}
+
+.modal-match-title {
+  color: #003087;
+  font-weight: 900;
+  font-size: 1.45rem;
+  line-height: 1.16;
+}
+
+.modal-match-img {
+  max-height: 105px;
+  min-height: 70px;
+  max-width: 135px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 18px rgba(0, 48, 135, 0.22));
+}
+
+.modal-match-subtitle {
+  color: #009EE2;
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1.28;
+  margin: 0.35rem 0 0.45rem;
+}
+
 .modal-standard-title { color: #00569D; font-weight: 900; }
 .modal-standard-img { filter: drop-shadow(0 6px 14px rgba(0, 75, 143, 0.22)); }
 .modal-standard-subtitle { color: #004B8F; font-weight: 700; }
@@ -42,37 +87,40 @@
     height: auto !important;
     max-height: 92dvh !important;
     max-height: 92vh !important;
-    padding: 1rem 1.5rem !important;
+    padding: 1.25rem 1.5rem !important;
     border-radius: 1.5rem !important;
     box-sizing: border-box !important;
     overflow-y: auto !important;
   }
   .modal-card-row {
-    width: min(92vw, 520px) !important;
-    max-width: 520px !important;
-    min-height: min(85dvh, 320px) !important;
-    padding: 1.15rem 1.6rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
+    width: min(90vw, 450px) !important;
+    max-width: 450px !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 90dvh !important;
+    padding-top: 1.65rem !important;
+    padding-bottom: 1.35rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  .modal-card-row .modal-actions {
+    margin-top: 0.55rem !important;
+    margin-bottom: 0.15rem !important;
   }
   .modal-card-row .modal-match-title {
-    font-size: 1.35rem !important;
-    line-height: 1.18 !important;
+    font-size: 1.45rem !important;
+    line-height: 1.16 !important;
   }
   .modal-card-row .modal-match-img {
-    height: auto !important;
-    max-height: 125px !important;
-    min-height: 80px !important;
-    width: auto !important;
-    max-width: 155px !important;
-    object-fit: contain !important;
+    max-height: 95px !important;
+    min-height: 65px !important;
+    max-width: 135px !important;
   }
   .modal-card-row .modal-match-subtitle {
-    font-size: 1.05rem !important;
-    line-height: 1.32 !important;
+    font-size: 0.98rem !important;
+    line-height: 1.28 !important;
     color: #00AEEF !important;
-    margin: 0.45rem 0 !important;
+    margin: 0.35rem 0 0.45rem !important;
   }
   .modal-card:not(.modal-card-row) {
     width: min(90vw, 420px) !important;
@@ -100,37 +148,42 @@
 /* MÓVILES EN MODO HORIZONTAL (ALTURA REDUCIDA) */
 @media (orientation: landscape) and (max-height: 480px) {
   .modal-card {
-    padding: 0.55rem 1.15rem !important;
+    padding: 0.75rem 1.15rem !important;
     max-height: 95dvh !important;
   }
   .modal-card-row {
-    width: min(90vw, 380px) !important;
-    max-width: 380px !important;
-    height: 92dvh !important;
-    min-height: 90dvh !important;
-    padding: 0.6rem 1.15rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
+    width: min(88vw, 395px) !important;
+    max-width: 395px !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 94dvh !important;
+    padding-top: 1.45rem !important;
+    padding-bottom: 1.1rem !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+  }
+  .modal-card-row .modal-actions {
+    margin-top: 0.45rem !important;
+    margin-bottom: 0.1rem !important;
   }
   .modal-card-row .modal-match-title {
-    font-size: 1.12rem !important;
-    line-height: 1.12 !important;
+    font-size: 1.22rem !important;
+    line-height: 1.14 !important;
   }
   .modal-card-row .modal-match-img {
-    max-height: 85px !important;
-    min-height: 65px !important;
-    max-width: 120px !important;
+    max-height: 72px !important;
+    min-height: 55px !important;
+    max-width: 100px !important;
   }
   .modal-card-row .modal-match-subtitle {
-    font-size: 0.88rem !important;
+    font-size: 0.84rem !important;
     line-height: 1.22 !important;
-    margin: 0.2rem 0 !important;
+    margin: 0.2rem 0 0.3rem !important;
   }
   .modal-card:not(.modal-card-row) {
     width: min(90vw, 340px) !important;
     max-width: 340px !important;
-    padding: 0.55rem 1rem !important;
+    padding: 0.65rem 1rem !important;
   }
   .modal-card:not(.modal-card-row) .modal-standard-img {
     max-height: 75px !important;
@@ -140,37 +193,42 @@
 /* DESKTOP Y PANTALLAS GRANDES */
 @media (min-width: 1024px) and (min-height: 560px) {
   .modal-card {
-    padding: 2.25rem 2.75rem !important;
+    padding: 2.25rem 2.5rem !important;
     border-radius: 2rem !important;
     border: 3px solid rgba(0, 102, 179, 0.25) !important;
     box-shadow: 0 25px 60px rgba(0, 45, 84, 0.4) !important;
     max-height: 85vh !important;
   }
   .modal-card-row {
-    width: min(90vw, 680px) !important;
-    max-width: 680px !important;
-    min-height: 380px !important;
-    padding: 2.25rem 2.75rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
+    width: min(90vw, 540px) !important;
+    max-width: 540px !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: 2.25rem !important;
+    padding-bottom: 1.85rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  .modal-card-row .modal-actions {
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.2rem !important;
   }
   .modal-card-row .modal-match-title {
-    font-size: 2.1rem !important;
-    line-height: 1.18 !important;
+    font-size: 1.95rem !important;
+    line-height: 1.16 !important;
     color: #003087 !important;
   }
   .modal-card-row .modal-match-img {
-    max-height: 180px !important;
-    min-height: 130px !important;
-    max-width: 220px !important;
+    max-height: 135px !important;
+    min-height: 95px !important;
+    max-width: 185px !important;
     filter: drop-shadow(0 8px 24px rgba(0, 48, 135, 0.26)) !important;
   }
   .modal-card-row .modal-match-subtitle {
-    font-size: 1.25rem !important;
-    line-height: 1.4 !important;
-    margin: 1rem 0 1.25rem !important;
-    max-width: 90% !important;
+    font-size: 1.12rem !important;
+    line-height: 1.35 !important;
+    margin: 0.45rem 0 0.65rem !important;
+    max-width: 92% !important;
   }
   .modal-card:not(.modal-card-row) {
     width: min(90vw, 520px) !important;
