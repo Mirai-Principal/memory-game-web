@@ -1,0 +1,120 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.consejo-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #EAF7FD;
+  border-radius: 1.5rem;
+  padding: 0 1.1rem 0 0;
+  box-shadow: 0 8px 22px rgba(0, 60, 130, 0.16), 0 4px 16px #DFFFFF;
+  border: 1px solid rgba(180, 230, 255, 0.95);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  min-height: 4.6rem;
+}
+
+.consejo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 60, 130, 0.22), 0 6px 20px #DFFFFF;
+}
+
+/* Caja de la imagen en tono celeste suave que ocupa toda la altura de la card */
+.consejo-image-box {
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 4.8rem;
+  height: auto;
+  border-radius: 0 1.4rem 1.4rem 0;
+  background-color: #D2F3FE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.55rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.consejo-image {
+  width: 100%;
+  height: 100%;
+  max-height: 3.8rem;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 54, 160, 0.12));
+}
+
+/* Insignia circular con el número */
+.consejo-badge {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Texto de la recomendación */
+.consejo-content {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  padding: 0.65rem 0.25rem 0.65rem 0;
+}
+
+.consejo-text {
+  margin: 0;
+  color: #0036A0;
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+}
+
+@media (max-width: 420px) {
+  .consejo-card {
+    gap: 0.65rem;
+    padding: 0 0.85rem 0 0;
+    border-radius: 1.25rem;
+    min-height: 4.1rem;
+  }
+
+  .consejo-image-box {
+    width: 4.1rem;
+    border-radius: 0 1.15rem 1.15rem 0;
+    padding: 0.35rem 0.4rem;
+  }
+
+  .consejo-image {
+    max-height: 3.3rem;
+  }
+
+  .consejo-badge {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.15rem;
+  }
+
+  .consejo-content {
+    padding: 0.5rem 0.2rem 0.5rem 0;
+  }
+
+  .consejo-text {
+    font-size: 0.77rem;
+    line-height: 1.2;
+  }
+}

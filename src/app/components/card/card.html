@@ -1,1 +1,83 @@
-<p>card works!</p>
+<div
+  class="card-wrapper"
+  [class.is-flipped]="flipped() || matched()"
+  [class.is-matched]="matched()"
+  [class.is-error]="hasError()"
+  [class.is-disabled]="disabled() || matched()"
+  (click)="onCardClick()"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="matched() ? 'Carta emparejada y descubierta' : (flipped() ? 'Carta descubierta' : 'Carta oculta')"
+  (keydown.enter)="onCardClick()"
+  (keydown.space)="onCardClick()"
+>
+  <div class="card-flipper">
+    <!-- Cara Frontal (Cubierta: front_card.png con el signo ?) -->
+    <div class="card-face card-cover">
+      <img
+        src="images/front_card.png"
+        alt="Carta Frizac"
+        class="card-cover-img"
+        draggable="false"
+      />
+    </div>
+
+    <!-- Cara Trasera (Descubierta: imagen del producto de img_cards) -->
+    <div class="card-face card-content">
+      <div class="card-content-tile">
+        <img
+          [src]="imageSrc()"
+          [alt]="altText()"
+          class="card-product-img"
+          draggable="false"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Efecto de Estrellas brillantes al descubrir la pareja y desaparecer -->
+  @if (matched()) {
+    <div class="star-burst-container" aria-hidden="true">
+      <div class="star-item star-1">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <polygon points="12,1 15,9 23,9 17,14 19,22 12,17 5,22 7,14 1,9 9,9" fill="#FFDF00" stroke="#FFA000" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="star-item star-2">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z" fill="#FFF59D"/>
+        </svg>
+      </div>
+      <div class="star-item star-3">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <polygon points="12,1 15,9 23,9 17,14 19,22 12,17 5,22 7,14 1,9 9,9" fill="#FFB300" stroke="#FF8F00" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="star-item star-4">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z" fill="#FFE082"/>
+        </svg>
+      </div>
+      <div class="star-item star-5">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <polygon points="12,1 15,9 23,9 17,14 19,22 12,17 5,22 7,14 1,9 9,9" fill="#FFEA00" stroke="#F57F17" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="star-item star-6">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z" fill="#FFFFFF"/>
+        </svg>
+      </div>
+      <div class="star-item star-7">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <polygon points="12,1 15,9 23,9 17,14 19,22 12,17 5,22 7,14 1,9 9,9" fill="#FFD54F" stroke="#FFA000" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="star-item star-8">
+        <svg viewBox="0 0 24 24" class="star-svg">
+          <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z" fill="#FFCC80"/>
+        </svg>
+      </div>
+    </div>
+  }
+</div>

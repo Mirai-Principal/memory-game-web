@@ -1,0 +1,27 @@
+<div class="consejo-card">
+  <!-- Caja de la imagen en fondo celeste suave -->
+  <div class="consejo-image-box">
+    <img
+      [src]="imageSrc()"
+      [alt]="imageAlt()"
+      class="consejo-image"
+      draggable="false"
+    />
+  </div>
+
+  <!-- Círculo coloreado con el número de la imagen -->
+  <div class="consejo-badge" [style.backgroundColor]="badgeColor()">
+    <span>{{ numero() }}</span>
+  </div>
+
+  <!-- Descripción de la recomendación -->
+  <div class="consejo-content">
+    <p class="consejo-text">
+      @if (descripcion()) {
+        {{ descripcion() }}
+      } @else {
+        <ng-content></ng-content>
+      }
+    </p>
+  </div>
+</div>

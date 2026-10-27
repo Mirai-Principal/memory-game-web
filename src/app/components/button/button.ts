@@ -9,6 +9,8 @@ import { Component, input, output } from '@angular/core';
 export class ButtonComponent {
   /** Texto dinámico del botón */
   readonly text = input<string>('');
+  /** Tamaño del botón */
+  readonly size = input<'sm' | 'md' | 'lg'>('lg');
   /** Estado deshabilitado */
   readonly disabled = input<boolean>(false);
   /** Tipo de botón HTML */
@@ -24,3 +26,4 @@ export class ButtonComponent {
     }
   }
 }
+

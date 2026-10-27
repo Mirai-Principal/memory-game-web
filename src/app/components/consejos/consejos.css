@@ -1,0 +1,176 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+}
+
+.consejos-screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(90deg, #DFFFFF 0%, #FFFFFF 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Botón cerrar flotante */
+.consejos-close-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1.25rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 9999px;
+  background: rgba(0, 54, 160, 0.08);
+  color: #0036A0;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 900;
+  transition: all 0.2s ease;
+  z-index: 60;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.consejos-close-btn:hover {
+  background: #0036A0;
+  color: #FFFFFF;
+  transform: scale(1.08);
+}
+
+.consejos-close-btn:active {
+  transform: scale(0.95);
+}
+
+/* Contenedor central con ancho máximo responsivo */
+.consejos-content-container {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Pestaña superior rosa con CONSEJOS pegada al borde superior */
+.consejos-tab {
+  background: linear-gradient(90deg, #F05388 0%, #EA4882 100%);
+  border-radius: 0 0 1.5rem 1.5rem;
+  padding: 0.45rem 2.8rem;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 14px rgba(234, 72, 130, 0.35);
+  margin-top: 0;
+  margin-bottom: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Encabezado */
+.consejos-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0.95rem;
+}
+
+.consejos-title {
+  margin: 0;
+  color: #0036A0;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.consejos-logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0.25rem 0;
+}
+
+.consejos-logo {
+  height: 2.75rem;
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 5px rgba(0, 54, 160, 0.12));
+}
+
+.consejos-exclamation {
+  color: #0036A0;
+  font-size: 2.85rem;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-block;
+  margin-left: -2px;
+}
+
+.consejos-subtitle {
+  margin: 0.25rem 0 0;
+  color: #009EE2;
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.28;
+}
+
+/* Lista de tarjetas */
+.consejos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+/* Pie con botón de volver */
+.consejos-footer {
+  margin-top: 1.35rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 420px) {
+  .consejos-screen {
+    padding: 0 0.75rem 1.75rem;
+  }
+
+  .consejos-tab {
+    font-size: 1.15rem;
+    padding: 0.35rem 2.2rem;
+  }
+
+  .consejos-title {
+    font-size: 1.05rem;
+  }
+
+  .consejos-logo {
+    height: 2.3rem;
+  }
+
+  .consejos-exclamation {
+    font-size: 2.4rem;
+  }
+
+  .consejos-subtitle {
+    font-size: 0.78rem;
+  }
+
+  .consejos-list {
+    gap: 0.55rem;
+  }
+}

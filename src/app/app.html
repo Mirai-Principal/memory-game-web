@@ -1,5 +1,6 @@
 <main class="h-screen h-[100dvh] w-full overflow-hidden flex items-center justify-center">
   @if (currentScreen() === 'inicio') {
+    <!-- Pantalla de Inicio -->
     <div class="relative h-full aspect-[3387/6021] max-w-full flex items-center justify-center animate-fade-in">
       <img
         src="images/inicio.jpg"
@@ -11,11 +12,25 @@
       <div class="absolute bottom-[6%] w-full flex justify-center px-6 z-10">
         <app-button
           text="Jugar ¡ahora!"
-          (clicked)="onStartGame()"
+          (clicked)="openStartModal()"
         ></app-button>
       </div>
+
+      <!-- Modal de Instrucciones previo al juego -->
+      @if (showStartModal()) {
+        <app-mensaje-modal
+          title="¡Activa tu memoria!"
+          imageSrc="images/empezar.png"
+          imageAlt="¡Activa tu memoria!"
+          subtitle="Encuentra las figuras y descubre&#10;consejos de cuidado."
+          primaryButtonText="Empezar"
+          (primaryAction)="onStartFromModal()"
+          (close)="closeStartModal()"
+        ></app-mensaje-modal>
+      }
     </div>
   } @else if (currentScreen() === 'juego') {
+    <!-- Pantalla del Tablero de Juego -->
     <div class="relative h-full aspect-[3623/6437] max-w-full flex items-center justify-center animate-fade-in">
       <img
         src="images/fondo_juego.jpg"
@@ -23,7 +38,93 @@
         class="h-full w-full object-contain pointer-events-none select-none drop-shadow-xl"
       />
 
-      <!-- Contenedor del área de juego / tablero -->
+      <!-- Área de Juego Central: Marcador, Cuadrícula 4x3 y Botón Ver Consejos -->
+      <div class="absolute inset-x-0 top-[13.5%] bottom-[3%] flex flex-col items-center justify-between px-3 py-1.5 z-10">
+        <!-- Marcador y controles -->
+        <div class="w-full max-w-[92%] flex items-center justify-between px-3 py-1.5 bg-[#004B8F]/80 backdrop-blur-md rounded-2xl border border-white/25 shadow-md shrink-0">
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white">
+            <span class="text-pink-300">Parejas:</span>
+            <span class="text-white font-extrabold bg-pink-500/30 px-2 py-0.5 rounded-full">{{ matchedPairs() }} / 6</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white">
+            <span class="text-yellow-300">Intentos:</span>
+            <span class="text-white font-extrabold bg-yellow-500/30 px-2 py-0.5 rounded-full">{{ moves() }}</span>
+          </div>
+          <button
+            type="button"
+            (click)="startGame()"
+            class="text-xs bg-white/20 hover:bg-white/30 active:scale-95 text-white font-bold px-2.5 py-1 rounded-xl transition cursor-pointer"
+            title="Reiniciar partida"
+          >
+            ↺ Reiniciar
+          </button>
+        </div>
+
+        <!-- Cuadrícula 4 filas x 3 columnas (12 cartas en total) -->
+        <div class="grid grid-cols-3 grid-rows-4 gap-2 sm:gap-2.5 w-full max-w-[92%] aspect-[3/4] my-auto items-center justify-center">
+          @for (card of cards(); track card.id) {
+            <app-card
+              [imageSrc]="card.imageSrc"
+              [flipped]="card.flipped"
+              [matched]="card.matched"
+              [hasError]="card.hasError ?? false"
+              [disabled]="isChecking()"
+              (cardClick)="onCardClick(card)"
+            ></app-card>
+          }
+        </div>
+
+        <!-- Botón Ver Consejos ubicado bajo la cuadrícula de cartas -->
+        <div class="w-full flex justify-center pb-1 shrink-0">
+          <app-button
+            text="Ver Consejos"
+            size="md"
+            (clicked)="openConsejosModal()"
+          ></app-button>
+        </div>
+      </div>
+
+      <!-- Vista de Pantalla Completa: Consejos de Cuidado -->
+      @if (showConsejosModal()) {
+        <div class="fixed inset-0 z-50 bg-gradient-to-r from-[#FFFFFF] to-[#EFFFFF] overflow-y-auto animate-fade-in">
+          <app-consejos (close)="closeConsejosModal()"></app-consejos>
+        </div>
+      }
+
+      <!-- Modal de Pareja Correcta (Consejo de salud para cada número descubierto) -->
+      @if (currentMatchConsejo(); as matchInfo) {
+        <app-mensaje-modal
+          [title]="matchInfo.tituloPar"
+          [imageSrc]="matchInfo.imageSrc"
+          [imageAlt]="matchInfo.tituloPar"
+          [subtitle]="matchInfo.descripcion"
+          primaryButtonText="Continuar"
+          (primaryAction)="closeMatchModal()"
+          (close)="closeMatchModal()"
+        ></app-mensaje-modal>
+      }
+
+      <!-- Modal de Victoria (Reto Completado) usando MensajeModal reutilizable -->
+      @if (showVictoryModal()) {
+        <app-mensaje-modal
+          title="¡Reto Completado!"
+          imageSrc="images/reto_completado.png"
+          imageAlt="Reto Completado"
+          primaryButtonText="Jugar otra vez"
+          secondaryButtonText="Volver al inicio"
+          (primaryAction)="startGame()"
+          (secondaryAction)="goToHome()"
+        >
+          <p>
+            Encontraste las 6 figuras en
+            <span class="text-[#E94E96] font-black text-lg">{{ moves() }}</span>
+            intentos.
+          </p>
+          <p>
+            ¡Comparte lo aprendido con tu familia!
+          </p>
+        </app-mensaje-modal>
+      }
     </div>
   }
 </main>

@@ -3,6 +3,9 @@
   [disabled]="disabled()"
   (click)="handleClick($event)"
   class="btn-frizac select-none cursor-pointer text-white font-extrabold tracking-wide transition-all duration-200 hover:brightness-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:brightness-100 disabled:active:scale-100"
+  [class.btn-sm]="size() === 'sm'"
+  [class.btn-md]="size() === 'md'"
+  [class.btn-lg]="size() === 'lg'"
   [class]="customClass()"
 >
   @if (text()) {

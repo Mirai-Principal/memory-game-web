@@ -1,0 +1,57 @@
+<div
+  class="fixed inset-0 bg-[#002D54]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+>
+  <div
+    class="modal-card rounded-3xl p-5 sm:p-6 flex flex-col items-center text-center shadow-2xl w-full max-h-[90vh]"
+    [class]="maxWidthClass()"
+  >
+    @if (title()) {
+      <h2 class="text-2xl sm:text-3xl font-black text-[#00569D] tracking-wide drop-shadow-xs mb-2 shrink-0">
+        {{ title() }}
+      </h2>
+    }
+
+    @if (imageSrc()) {
+      <img
+        [src]="imageSrc()"
+        [alt]="imageAlt()"
+        class="max-h-36 sm:max-h-44 w-auto max-w-[85%] object-contain drop-shadow-md mb-3 animate-bounce-subtle pointer-events-none select-none shrink-0"
+      />
+    }
+
+    @if (subtitle()) {
+      <p class="text-[#004B8F] text-sm sm:text-base font-semibold leading-relaxed whitespace-pre-line my-1 shrink-0">
+        {{ subtitle() }}
+      </p>
+    }
+
+    <!-- Contenido proyectado personalizado (si se proporciona) -->
+    <div class="modal-body text-[#004B8F] text-sm sm:text-base font-semibold my-1 w-full flex-1 min-h-0 overflow-y-auto">
+      <ng-content></ng-content>
+    </div>
+
+    <!-- Acciones / Botones -->
+    <div class="mt-4 sm:mt-5 flex flex-col gap-2.5 w-full items-center shrink-0">
+      @if (primaryButtonText()) {
+        <app-button
+          [text]="primaryButtonText()"
+          size="md"
+          (clicked)="onPrimaryClick()"
+        ></app-button>
+      }
+
+      @if (secondaryButtonText()) {
+        <button
+          type="button"
+          (click)="onSecondaryClick()"
+          class="text-[#00569D]/80 hover:text-[#00569D] text-xs sm:text-sm font-bold underline underline-offset-4 cursor-pointer mt-1 transition"
+        >
+          {{ secondaryButtonText() }}
+        </button>
+      }
+    </div>
+  </div>
+</div>

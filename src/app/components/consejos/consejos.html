@@ -1,1 +1,61 @@
-<p>consejos works!</p>
+<div class="consejos-screen">
+  <!-- Botón cerrar flotante -->
+  <button
+    type="button"
+    class="consejos-close-btn"
+    (click)="onClose()"
+    aria-label="Cerrar vista de consejos"
+    title="Cerrar"
+  >
+    ✕
+  </button>
+
+  <div class="consejos-content-container">
+    <!-- Pestaña superior rosa con CONSEJOS pegada arriba -->
+    <div class="consejos-tab">
+      <span>CONSEJOS</span>
+    </div>
+
+    <!-- Encabezado con título, logo FRIZAC y subtítulo -->
+    <div class="consejos-header">
+      <h2 class="consejos-title">
+        ¡SIGUE<br />APRENDIENDO CON
+      </h2>
+
+      <div class="consejos-logo-wrapper">
+        <img
+          src="images/frizac_logo.png"
+          alt="FRIZAC"
+          class="consejos-logo"
+          draggable="false"
+        />
+        <span class="consejos-exclamation">!</span>
+      </div>
+
+      <p class="consejos-subtitle">
+        Pequeñas acciones, grandes<br />resultados en la salud de tu familia.
+      </p>
+    </div>
+
+    <!-- Lista de las 6 tarjetas de consejos -->
+    <div class="consejos-list">
+      @for (consejo of consejos; track consejo.numero) {
+        <app-card-consejo
+          [numero]="consejo.numero"
+          [imageSrc]="consejo.imageSrc"
+          [descripcion]="consejo.descripcion"
+          [badgeColor]="consejo.badgeColor"
+        ></app-card-consejo>
+      }
+    </div>
+
+    <!-- Botón de acción al pie -->
+    <div class="consejos-footer">
+      <app-button
+        text="Volver al juego"
+        size="md"
+        (clicked)="onClose()"
+      ></app-button>
+    </div>
+  </div>
+</div>
