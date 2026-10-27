@@ -1,79 +1,87 @@
-<main class="h-full h-[100dvh] max-h-[100dvh] w-full overflow-hidden flex items-center justify-center safe-area-container">
+<main class="relative h-full h-[100dvh] max-h-[100dvh] w-full w-[100vw] overflow-hidden flex items-center justify-center">
   @if (currentScreen() === 'inicio') {
+    <!-- Imagen de fondo que escala y cubre el 100% de la pantalla completa tanto en horizontal como en vertical -->
+    <img
+      src="images/inicio.png"
+      alt="Aprende con Frizac - Fondo"
+      class="fullscreen-bg-cover"
+    />
+
     <!-- Pantalla de Inicio - MODO RETRATO (Vertical: smartphones) -->
-    <div class="landscape:hidden relative h-full aspect-[3387/6021] max-w-full flex items-center justify-center animate-fade-in">
-      <img
-        src="images/inicio.png"
-        alt="Aprende con Frizac - Inicio"
-        class="h-full w-full object-contain pointer-events-none select-none drop-shadow-xl"
-      />
+    <div class="landscape:hidden relative z-10 w-full h-full flex flex-col items-center justify-center safe-area-container animate-fade-in overflow-hidden">
+      <div class="relative w-full h-full max-w-[480px] max-h-[100dvh] mx-auto flex items-center justify-center">
+        <!-- Contenedor con aspecto proporcional exacto para los elementos del inicio -->
+        <div class="relative w-full h-full aspect-[3387/6021] max-h-full flex items-center justify-center">
+          <svg class="w-full h-full invisible pointer-events-none" viewBox="0 0 3387 6021"></svg>
 
-      <!-- Logo FRIZAC superior -->
-      <img
-        src="images/frizac_logo.png"
-        alt="FRIZAC"
-        class="absolute top-[7.5%] left-1/2 -translate-x-1/2 w-[72%] max-w-[340px] object-contain drop-shadow-md pointer-events-none select-none z-10"
-      />
+          <!-- Logo FRIZAC superior -->
+          <img
+            src="images/frizac_logo.png"
+            alt="FRIZAC"
+            class="absolute top-[7.5%] left-1/2 -translate-x-1/2 w-[72%] max-w-[340px] object-contain drop-shadow-md pointer-events-none select-none z-10"
+          />
 
-      <!-- Slogan: Alivio de la fiebre y el dolor -->
-      <img
-        src="images/alivia-fiebre-dolor.png"
-        alt="Alivio de la fiebre y el dolor"
-        class="absolute top-[23.5%] left-1/2 -translate-x-1/2 w-[64%] max-w-[290px] object-contain drop-shadow-sm pointer-events-none select-none z-10"
-      />
+          <!-- Slogan: Alivio de la fiebre y el dolor -->
+          <img
+            src="images/alivia-fiebre-dolor.png"
+            alt="Alivio de la fiebre y el dolor"
+            class="absolute top-[23.5%] left-1/2 -translate-x-1/2 w-[64%] max-w-[290px] object-contain drop-shadow-sm pointer-events-none select-none z-10"
+          />
 
-      <!-- Título: Encuentra el Alivio -->
-      <img
-        src="images/ecuentra_alivio.png"
-        alt="Encuentra el Alivio"
-        class="absolute top-[29%] left-1/2 -translate-x-1/2 w-[76%] max-w-[350px] object-contain drop-shadow-lg pointer-events-none select-none z-10"
-      />
+          <!-- Título: Encuentra el Alivio -->
+          <img
+            src="images/ecuentra_alivio.png"
+            alt="Encuentra el Alivio"
+            class="absolute top-[29%] left-1/2 -translate-x-1/2 w-[76%] max-w-[350px] object-contain drop-shadow-lg pointer-events-none select-none z-10"
+          />
 
-      <!-- Subtítulo: Juega y aprende -->
-      <img
-        src="images/juega-y-aprende.png"
-        alt="Juega y aprende"
-        class="absolute top-[48%] right-[7%] w-[38%] max-w-[175px] object-contain drop-shadow-md pointer-events-none select-none z-10"
-      />
+          <!-- Subtítulo: Juega y aprende -->
+          <img
+            src="images/juega-y-aprende.png"
+            alt="Juega y aprende"
+            class="absolute top-[48%] right-[7%] w-[38%] max-w-[175px] object-contain drop-shadow-md pointer-events-none select-none z-10"
+          />
 
-      <!-- Personaje Cubo FRIZAC con termómetro (con animación y efecto) -->
-      <img
-        src="images/cubo-inicio.png"
-        alt="Cubo Frizac"
-        class="absolute top-[50%] left-[4%] w-[55%] max-w-[275px] object-contain pointer-events-none select-none z-10 animate-cube-float"
-      />
+          <!-- Personaje Cubo FRIZAC con termómetro (con animación y efecto) -->
+          <img
+            src="images/cubo-inicio.png"
+            alt="Cubo Frizac"
+            class="absolute top-[50%] left-[4%] w-[55%] max-w-[275px] object-contain pointer-events-none select-none z-10 animate-cube-float"
+          />
 
-      <!-- Tarjetas (con animación y efecto) -->
-      <img
-        src="images/cards.png"
-        alt="Tarjetas Frizac"
-        class="absolute top-[58%] right-[7%] w-[38%] max-w-[185px] object-contain pointer-events-none select-none z-10 animate-cards-float"
-      />
+          <!-- Tarjetas (con animación y efecto) -->
+          <img
+            src="images/cards.png"
+            alt="Tarjetas Frizac"
+            class="absolute top-[58%] right-[7%] w-[38%] max-w-[185px] object-contain pointer-events-none select-none z-10 animate-cards-float"
+          />
 
-      <!-- Botón para iniciar el juego y Pantalla Completa -->
-      <div class="absolute bottom-[6%] w-full flex flex-col items-center gap-1.5 px-6 z-10">
-        <app-button
-          text="Jugar ¡ahora!"
-          (clicked)="openStartModal()"
-        ></app-button>
+          <!-- Botón para iniciar el juego y Pantalla Completa -->
+          <div class="absolute bottom-[6%] w-full flex flex-col items-center gap-1.5 px-6 z-10">
+            <app-button
+              text="Jugar ¡ahora!"
+              (clicked)="openStartModal()"
+            ></app-button>
 
-        <button
-          type="button"
-          (click)="toggleFullscreen()"
-          class="flex items-center gap-1.5 text-white/95 hover:text-white bg-[#003870]/75 hover:bg-[#003870]/95 active:scale-95 text-[11px] font-bold px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm transition-all cursor-pointer shadow-sm"
-        >
-          @if (!isFullscreen()) {
-            <svg class="w-3.5 h-3.5 text-[#00E5FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-            </svg>
-            <span>Ver a pantalla completa</span>
-          } @else {
-            <svg class="w-3.5 h-3.5 text-[#FF5E98]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
-            </svg>
-            <span>Salir de pantalla completa</span>
-          }
-        </button>
+            <button
+              type="button"
+              (click)="toggleFullscreen()"
+              class="flex items-center gap-1.5 text-white/95 hover:text-white bg-[#003870]/75 hover:bg-[#003870]/95 active:scale-95 text-[11px] font-bold px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm transition-all cursor-pointer shadow-sm"
+            >
+              @if (!isFullscreen()) {
+                <svg class="w-3.5 h-3.5 text-[#00E5FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+                <span>Ver a pantalla completa</span>
+              } @else {
+                <svg class="w-3.5 h-3.5 text-[#FF5E98]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+                </svg>
+                <span>Salir de pantalla completa</span>
+              }
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Modal de Instrucciones previo al juego -->
@@ -91,14 +99,7 @@
     </div>
 
     <!-- Pantalla de Inicio - MODO PAISAJE (Horizontal: tablets, desktop, móvil apaisado) -->
-    <div class="hidden landscape:flex relative w-full h-full max-w-6xl lg:max-w-7xl mx-auto items-center justify-between px-3 sm:px-6 lg:px-12 py-1.5 sm:py-3 lg:py-6 animate-fade-in overflow-hidden">
-      <!-- Fondo decorativo adaptado al ancho completo -->
-      <img
-        src="images/inicio.png"
-        alt="Fondo Inicio"
-        class="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none select-none opacity-90"
-      />
-
+    <div class="hidden landscape:flex relative z-10 w-full h-full max-w-6xl lg:max-w-7xl mx-auto items-center justify-between px-3 sm:px-6 lg:px-12 py-1.5 sm:py-3 lg:py-6 safe-area-container animate-fade-in overflow-hidden">
       <!-- Columna Izquierda: Branding y Botón Jugar -->
       <div class="relative z-10 w-1/2 h-full max-h-full flex flex-col items-center justify-center text-center gap-1 sm:gap-2 lg:gap-3.5 px-2 sm:px-4 shrink-0">
         <img

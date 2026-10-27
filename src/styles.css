@@ -18,6 +18,50 @@ html, body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
+  box-sizing: border-box;
+}
+
+/* Imagen de fondo a pantalla completa que escala y cubre el 100% de la pantalla sin dejar espacios */
+.fullscreen-bg-cover {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+@media (orientation: landscape) {
+  .fullscreen-bg-cover {
+    object-position: center bottom !important;
+  }
+}
+
+/* Reglas explícitas para modo pantalla completa en móviles y navegadores */
+:fullscreen,
+:-webkit-full-screen,
+:-moz-full-screen,
+:-ms-fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #004B8F !important;
+}
+
+::backdrop {
+  background: #004B8F;
 }
 
 
