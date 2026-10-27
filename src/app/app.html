@@ -33,35 +33,83 @@
     <!-- Pantalla del Tablero de Juego -->
     <div class="relative h-full aspect-[3623/6437] max-w-full flex items-center justify-center animate-fade-in">
       <img
-        src="images/fondo_juego.jpg"
+        src="images/fondo_juego.png"
         alt="Aprende con Frizac - Tablero"
         class="h-full w-full object-contain pointer-events-none select-none drop-shadow-xl"
       />
 
+      <!-- Encabezado superior del juego: Encuentra el Alivio (izq) y FRIZAC (der) (+25% tamaño) -->
+      <div class="absolute top-[2%] inset-x-0 px-[3%] flex items-center justify-between gap-1 z-10 pointer-events-none select-none">
+        <img
+          src="images/ecuentra_alivio.png"
+          alt="Encuentra el Alivio"
+          class="w-[52%] max-h-[10.6vh] object-contain drop-shadow-sm"
+        />
+        <img
+          src="images/frizac_logo.png"
+          alt="FRIZAC"
+          class="w-[46%] max-h-[8.8vh] object-contain drop-shadow-sm"
+        />
+      </div>
+
       <!-- Área de Juego Central: Marcador, Cuadrícula 4x3 y Botón Ver Consejos -->
       <div class="absolute inset-x-0 top-[13.5%] bottom-[3%] flex flex-col items-center justify-between px-3 py-1.5 z-10">
-        <!-- Marcador y controles -->
-        <div class="w-full max-w-[92%] flex items-center justify-between px-3 py-1.5 bg-[#004B8F]/80 backdrop-blur-md rounded-2xl border border-white/25 shadow-md shrink-0">
-          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white">
-            <span class="text-pink-300">Parejas:</span>
-            <span class="text-white font-extrabold bg-pink-500/30 px-2 py-0.5 rounded-full">{{ matchedPairs() }} / 6</span>
+        <!-- Encabezado sobre la cuadrícula (Juega y aprende + Contador + Instrucción) -->
+        <div class="flex flex-col items-center text-center px-1 shrink-0 select-none my-1 w-full max-w-[96%]">
+          <h2 class="text-white font-extrabold text-[14px] sm:text-base tracking-wide leading-tight drop-shadow-sm font-['Fredoka',sans-serif]">
+            JUEGA Y APRENDE <span class="font-bold lowercase">a cuidar a tu familia</span>
+          </h2>
+          <div class="h-1 w-16 sm:w-20 bg-[#EE4A80] rounded-full my-1.5 shadow-sm"></div>
+
+          <!-- Indicadores gamificados: Encontrados, Intentos y Reset -->
+          <div class="w-full flex items-center justify-between gap-1.5 sm:gap-3 px-2 sm:px-3 py-1 bg-[#003870]/85 backdrop-blur-md rounded-2xl border border-white/20 shadow-md my-1">
+            <!-- Encontrados -->
+            <div class="flex items-center gap-1 sm:gap-1.5 bg-cyan-950/40 px-2 py-0.5 sm:py-1 rounded-xl border border-cyan-400/40 shadow-xs">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00E5FF] shrink-0 drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="13" height="15" rx="2.5" fill="#00C4F0" fill-opacity="0.3"/>
+                <path d="M6 3h11a2.5 2.5 0 0 1 2.5 2.5V17" />
+              </svg>
+              <span class="text-cyan-100 font-extrabold text-[10.5px] sm:text-xs tracking-tight">Encontrados:</span>
+              <span class="bg-gradient-to-r from-[#00A3E0] to-[#00E5FF] text-white font-black px-1.5 py-0.5 rounded-lg text-[10.5px] sm:text-xs shadow-xs tracking-wide">
+                {{ matchedPairs() }}/6
+              </span>
+            </div>
+
+            <!-- Intentos -->
+            <div class="flex items-center gap-1 sm:gap-1.5 bg-amber-950/40 px-2 py-0.5 sm:py-1 rounded-xl border border-amber-400/40 shadow-xs">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFD166] shrink-0 drop-shadow" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13 2L3 14h8l-1 8 11-12h-8l1-8z" />
+              </svg>
+              <span class="text-amber-100 font-extrabold text-[10.5px] sm:text-xs tracking-tight">Intentos:</span>
+              <span class="bg-gradient-to-r from-[#FF7A00] to-[#FFB703] text-white font-black px-1.5 py-0.5 rounded-lg text-[10.5px] sm:text-xs shadow-xs tracking-wide">
+                {{ moves() }}
+              </span>
+            </div>
+
+            <!-- Botón Reset -->
+            <button
+              type="button"
+              (click)="startGame()"
+              class="group flex items-center gap-1 bg-gradient-to-b from-[#FF5E98] to-[#E62B65] hover:from-[#FF75A8] hover:to-[#F03A74] active:scale-95 text-white font-extrabold text-[10.5px] sm:text-xs px-2.5 py-1 rounded-xl shadow-[0_2px_0_#9E0038,0_3px_6px_rgba(0,0,0,0.3)] active:shadow-none active:translate-y-[2px] transition-all border border-white/40 cursor-pointer pointer-events-auto"
+              title="Reiniciar partida"
+            >
+              <svg class="w-3.5 h-3.5 text-white shrink-0 group-hover:rotate-180 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                <path d="M21 21v-5h-5"/>
+              </svg>
+              <span>Reiniciar</span>
+            </button>
           </div>
-          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white">
-            <span class="text-yellow-300">Intentos:</span>
-            <span class="text-white font-extrabold bg-yellow-500/30 px-2 py-0.5 rounded-full">{{ moves() }}</span>
-          </div>
-          <button
-            type="button"
-            (click)="startGame()"
-            class="text-xs bg-white/20 hover:bg-white/30 active:scale-95 text-white font-bold px-2.5 py-1 rounded-xl transition cursor-pointer"
-            title="Reiniciar partida"
-          >
-            ↺ Reiniciar
-          </button>
+
+          <p class="text-white font-bold text-[11px] sm:text-sm tracking-tight mt-0.5 leading-tight drop-shadow-xs">
+            Toca dos tarjetas y encuentra su par
+          </p>
         </div>
 
         <!-- Cuadrícula 4 filas x 3 columnas (12 cartas en total) -->
-        <div class="grid grid-cols-3 grid-rows-4 gap-2 sm:gap-2.5 w-full max-w-[92%] aspect-[3/4] my-auto items-center justify-center">
+        <div class="grid grid-cols-3 grid-rows-4 gap-2 sm:gap-5 w-full max-w-[80%] aspect-[3/4] my-auto items-center justify-center">
           @for (card of cards(); track card.id) {
             <app-card
               [imageSrc]="card.imageSrc"
@@ -98,6 +146,8 @@
           [imageSrc]="matchInfo.imageSrc"
           [imageAlt]="matchInfo.tituloPar"
           [subtitle]="matchInfo.descripcion"
+          headerLayout="row"
+          maxWidthClass="max-w-[92%] sm:max-w-lg"
           primaryButtonText="Continuar"
           (primaryAction)="closeMatchModal()"
           (close)="closeMatchModal()"

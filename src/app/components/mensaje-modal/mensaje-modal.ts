@@ -23,6 +23,9 @@ export class MensajeModal {
   /** Clases CSS para el ancho máximo del contenedor del modal */
   readonly maxWidthClass = input<string>('max-w-[88%] sm:max-w-md');
 
+  /** Disposición del encabezado: 'column' (predeterminado) o 'row' (título a la izquierda, imagen a la derecha) */
+  readonly headerLayout = input<'column' | 'row'>('column');
+
   /** Texto del botón principal de acción */
   readonly primaryButtonText = input<string>('');
 
