@@ -7,64 +7,67 @@
   <div
     class="modal-card rounded-3xl p-3 sm:p-6 flex flex-col items-center text-center shadow-2xl w-full max-h-[92dvh] max-h-[92vh]"
     [class]="maxWidthClass()"
+    [class.modal-card-row]="headerLayout() === 'row'"
   >
     @if (headerLayout() === 'row') {
-      <!-- Encabezado en una sola fila (2 columnas: Título grande a la izquierda, Imagen grande a la derecha) -->
-      <div class="grid grid-cols-[1.1fr_1fr] sm:grid-cols-2 gap-3 sm:gap-6 items-center w-full my-2 shrink-0">
-        <!-- Columna Izquierda: Título grande en azul oscuro -->
+      <!-- Encabezado en una sola fila (2 columnas: Título a la izquierda, Imagen a la derecha) -->
+      <div class="grid grid-cols-[1.2fr_1fr] sm:grid-cols-2 gap-3 sm:gap-5 items-center w-full my-0.5">
+        <!-- Columna Izquierda: Título en azul oscuro -->
         <div class="text-left flex flex-col justify-center min-w-0 pr-1">
           @if (title()) {
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-[#003087] tracking-tight drop-shadow-xs leading-[1.15] font-['Fredoka',sans-serif]">
+            <h2 class="modal-match-title font-black text-[#003087] tracking-tight drop-shadow-xs font-['Fredoka',sans-serif]">
               {{ title() }}
             </h2>
           }
         </div>
 
-        <!-- Columna Derecha: Imagen grande con animación suave de rebote -->
+        <!-- Columna Derecha: Imagen con animación suave de rebote -->
         @if (imageSrc()) {
-          <div class="flex items-center justify-center shrink-0">
+          <div class="flex items-center justify-center">
             <img
               [src]="imageSrc()"
               [alt]="imageAlt()"
-              class="h-32 sm:h-44 md:h-48 w-auto max-w-[140px] sm:max-w-[190px] object-contain drop-shadow-lg pointer-events-none select-none animate-bounce-subtle"
+              class="modal-match-img object-contain drop-shadow-xl pointer-events-none select-none animate-bounce-subtle"
             />
           </div>
         }
       </div>
 
-      <!-- Subtítulo / Descripción centrada en celeste (#00AEEF) y con letra más grande -->
+      <!-- Subtítulo / Descripción centrada en celeste (#00AEEF) -->
       @if (subtitle()) {
-        <p class="text-[#00AEEF] text-base sm:text-lg md:text-xl font-extrabold leading-snug tracking-tight text-center my-3 sm:my-4 max-w-[95%] sm:max-w-md mx-auto">
+        <p class="modal-match-subtitle text-[#00AEEF] font-extrabold leading-snug tracking-tight text-center max-w-[96%] mx-auto my-auto py-0.5">
           {{ subtitle() }}
         </p>
       }
     } @else {
       <!-- Encabezado vertical estándar (en columna) -->
-      @if (title()) {
-        <h2 class="text-2xl sm:text-3xl font-black text-[#00569D] tracking-wide drop-shadow-xs mb-2 shrink-0 font-['Fredoka',sans-serif]">
-          {{ title() }}
-        </h2>
-      }
+      <div class="w-full flex flex-col justify-center items-center my-0.5 min-h-0">
+        @if (title()) {
+          <h2 class="modal-standard-title text-xl sm:text-2xl font-black text-[#00569D] tracking-wide drop-shadow-xs mb-1 shrink-0 font-['Fredoka',sans-serif]">
+            {{ title() }}
+          </h2>
+        }
 
-      @if (imageSrc()) {
-        <img
-          [src]="imageSrc()"
-          [alt]="imageAlt()"
-          class="max-h-36 sm:max-h-44 w-auto max-w-[85%] object-contain drop-shadow-md mb-3 animate-bounce-subtle pointer-events-none select-none shrink-0"
-        />
-      }
+        @if (imageSrc()) {
+          <img
+            [src]="imageSrc()"
+            [alt]="imageAlt()"
+            class="modal-standard-img object-contain drop-shadow-md mb-1.5 animate-bounce-subtle pointer-events-none select-none shrink-0"
+          />
+        }
 
-      @if (subtitle()) {
-        <p class="text-[#004B8F] text-sm sm:text-base font-semibold leading-relaxed whitespace-pre-line my-1 shrink-0">
-          {{ subtitle() }}
-        </p>
-      }
+        @if (subtitle()) {
+          <p class="modal-standard-subtitle text-[#004B8F] text-sm sm:text-base font-semibold leading-relaxed whitespace-pre-line my-0.5 shrink-0">
+            {{ subtitle() }}
+          </p>
+        }
+
+        <!-- Contenido proyectado personalizado (si se proporciona) -->
+        <div class="modal-body text-[#004B8F] text-sm sm:text-base font-semibold my-0.5 w-full overflow-y-auto">
+          <ng-content></ng-content>
+        </div>
+      </div>
     }
-
-    <!-- Contenido proyectado personalizado (si se proporciona) -->
-    <div class="modal-body text-[#004B8F] text-sm sm:text-base font-semibold my-1 w-full flex-1 min-h-0 overflow-y-auto">
-      <ng-content></ng-content>
-    </div>
 
     <!-- Acciones / Botones -->
     <div class="mt-2 sm:mt-4 flex flex-col gap-1.5 sm:gap-2.5 w-full items-center shrink-0">

@@ -50,33 +50,31 @@
         class="absolute top-[58%] right-[7%] w-[38%] max-w-[185px] object-contain pointer-events-none select-none z-10 animate-cards-float"
       />
 
-      <!-- Botón para iniciar el juego -->
-      <div class="absolute bottom-[8%] w-full flex flex-col items-center gap-2 px-6 z-10">
+      <!-- Botón para iniciar el juego y Pantalla Completa -->
+      <div class="absolute bottom-[6%] w-full flex flex-col items-center gap-1.5 px-6 z-10">
         <app-button
           text="Jugar ¡ahora!"
           (clicked)="openStartModal()"
         ></app-button>
-      </div>
 
-      <!-- Botón Pantalla Completa (Modo Retrato) -->
-      <button
-        type="button"
-        (click)="toggleFullscreen()"
-        class="absolute top-3 right-3 z-30 flex items-center gap-1.5 bg-[#003870]/75 hover:bg-[#003870]/95 active:scale-95 text-white/95 text-xs font-bold px-3 py-1.5 rounded-full border border-white/35 backdrop-blur-md shadow-md transition-all cursor-pointer pointer-events-auto"
-        title="Activar o desactivar pantalla completa"
-      >
-        @if (!isFullscreen()) {
-          <svg class="w-3.5 h-3.5 text-[#00E5FF] shrink-0 drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-          </svg>
-          <span class="text-[11px] tracking-tight">Pantalla completa</span>
-        } @else {
-          <svg class="w-3.5 h-3.5 text-[#FF5E98] shrink-0 drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
-          </svg>
-          <span class="text-[11px] tracking-tight">Salir</span>
-        }
-      </button>
+        <button
+          type="button"
+          (click)="toggleFullscreen()"
+          class="flex items-center gap-1.5 text-white/95 hover:text-white bg-[#003870]/75 hover:bg-[#003870]/95 active:scale-95 text-[11px] font-bold px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm transition-all cursor-pointer shadow-sm"
+        >
+          @if (!isFullscreen()) {
+            <svg class="w-3.5 h-3.5 text-[#00E5FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <span>Ver a pantalla completa</span>
+          } @else {
+            <svg class="w-3.5 h-3.5 text-[#FF5E98]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+            </svg>
+            <span>Salir de pantalla completa</span>
+          }
+        </button>
+      </div>
 
       <!-- Modal de Instrucciones previo al juego -->
       @if (showStartModal()) {
@@ -100,26 +98,6 @@
         alt="Fondo Inicio"
         class="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none select-none opacity-90"
       />
-
-      <!-- Botón Pantalla Completa superior en Paisaje -->
-      <button
-        type="button"
-        (click)="toggleFullscreen()"
-        class="absolute top-2.5 right-4 z-30 flex items-center gap-1.5 bg-[#003870]/80 hover:bg-[#003870] active:scale-95 text-white text-xs font-bold px-3 py-1.5 rounded-full border border-white/35 backdrop-blur-md shadow-md transition-all cursor-pointer pointer-events-auto"
-        title="Activar pantalla completa"
-      >
-        @if (!isFullscreen()) {
-          <svg class="w-4 h-4 text-[#00E5FF] shrink-0 drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-          </svg>
-          <span class="text-[11.5px]">Pantalla completa</span>
-        } @else {
-          <svg class="w-4 h-4 text-[#FF5E98] shrink-0 drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
-          </svg>
-          <span class="text-[11.5px]">Salir de pantalla completa</span>
-        }
-      </button>
 
       <!-- Columna Izquierda: Branding y Botón Jugar -->
       <div class="relative z-10 w-1/2 h-full max-h-full flex flex-col items-center justify-center text-center gap-1 sm:gap-2 px-2 sm:px-4 shrink-0">
@@ -449,7 +427,7 @@
         [imageAlt]="matchInfo.tituloPar"
         [subtitle]="matchInfo.descripcion"
         headerLayout="row"
-        maxWidthClass="max-w-[92%] sm:max-w-lg"
+        maxWidthClass="max-w-[92%] sm:max-w-md landscape:max-w-[430px]"
         primaryButtonText="Continuar"
         (primaryAction)="closeMatchModal()"
         (close)="closeMatchModal()"

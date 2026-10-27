@@ -38,43 +38,173 @@
   }
 }
 
-/* Modo paisaje para pantallas con poca altura vertical (smartphones apaisados con barra de navegador) */
-@media (orientation: landscape) and (max-height: 600px) {
+/* =========================================================
+   ESTILOS GENERALES DE MODALES
+   ========================================================= */
+.modal-match-title {
+  color: #003087;
+  font-weight: 900;
+}
+
+.modal-match-img {
+  filter: drop-shadow(0 6px 18px rgba(0, 48, 135, 0.22));
+}
+
+.modal-match-subtitle {
+  color: #009EE2;
+  font-weight: 800;
+}
+
+.modal-standard-title {
+  color: #00569D;
+  font-weight: 900;
+}
+
+.modal-standard-img {
+  filter: drop-shadow(0 6px 14px rgba(0, 75, 143, 0.22));
+}
+
+.modal-standard-subtitle {
+  color: #004B8F;
+  font-weight: 700;
+}
+
+/* =========================================================
+   MODO PAISAJE (HORIZONTAL):
+   - Proporciones armoniosas y balanceadas
+   ========================================================= */
+@media (orientation: landscape) {
   .modal-card {
-    padding: 0.55rem 1.25rem !important;
-    max-height: 94dvh !important;
-    max-height: 94vh !important;
-    overflow-y: auto;
+    height: auto !important;
+    max-height: 92dvh !important;
+    max-height: 92vh !important;
+    padding: 0.85rem 1.35rem !important;
+    border-radius: 1.35rem !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
   }
-  .modal-card img {
-    max-height: 22dvh !important;
-    max-height: 80px !important;
+
+  /* Modal de pareja encontrada: mayor altura para no ser muy rectangular */
+  .modal-card-row {
+    width: min(90vw, 430px) !important;
+    max-width: 430px !important;
+    height: min(88dvh, 340px) !important;
+    min-height: 290px !important;
+    padding: 1rem 1.35rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+
+  .modal-card-row .modal-match-title {
+    font-size: 1.25rem !important;
+    line-height: 1.15 !important;
+    color: #003087 !important;
+    font-weight: 900 !important;
+  }
+
+  .modal-card-row .modal-match-img {
+    height: auto !important;
+    max-height: 115px !important;
+    min-height: 75px !important;
     width: auto !important;
+    max-width: 140px !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 6px 14px rgba(0, 48, 135, 0.22)) !important;
+  }
+
+  .modal-card-row .modal-match-subtitle {
+    font-size: 0.98rem !important;
+    line-height: 1.28 !important;
+    color: #00AEEF !important;
+    font-weight: 800 !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  /* Modales estándar (Inicio y Reto completado) - se mantienen compactos */
+  .modal-card:not(.modal-card-row) {
+    width: min(90vw, 380px) !important;
+    max-width: 380px !important;
+    padding: 0.85rem 1.25rem !important;
+  }
+
+  .modal-card:not(.modal-card-row) .modal-standard-img {
+    height: auto !important;
+    max-height: 95px !important;
+    min-height: 60px !important;
+    width: auto !important;
+    max-width: 80% !important;
+  }
+
+  .modal-card:not(.modal-card-row) .modal-standard-title {
+    font-size: 1.25rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .modal-card:not(.modal-card-row) .modal-standard-subtitle {
+    font-size: 0.9rem !important;
+    line-height: 1.25 !important;
   }
 }
 
+/* Teléfonos móviles con pantalla apaisada / horizontal de baja altura vertical */
 @media (orientation: landscape) and (max-height: 440px) {
   .modal-card {
-    padding: 0.35rem 1rem !important;
+    padding: 0.6rem 1.15rem !important;
+    max-height: 95dvh !important;
+  }
+
+  /* SOLO para el mensaje luego de acertar:
+     Aumentamos la altura ocupando el 92-94% vertical de la pantalla (92dvh)
+     y ajustamos el ancho a 380px para que tenga proporciones armoniosas y no se vea achatado ni muy rectangular */
+  .modal-card-row {
+    width: min(90vw, 380px) !important;
+    max-width: 380px !important;
+    height: 92dvh !important;
+    min-height: 90dvh !important;
     max-height: 94dvh !important;
-    border-radius: 1.15rem !important;
+    padding: 0.65rem 1.15rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
   }
-  .modal-card img {
-    max-height: 18dvh !important;
-    max-height: 55px !important;
+
+  .modal-card-row .modal-match-title {
+    font-size: 1.12rem !important;
+    line-height: 1.12 !important;
   }
-  .modal-card h2 {
-    font-size: 1.1rem !important;
-    line-height: 1.1 !important;
-    margin-bottom: 0.1rem !important;
+
+  .modal-card-row .modal-match-img {
+    height: auto !important;
+    max-height: 85px !important;
+    min-height: 65px !important;
+    max-width: 120px !important;
   }
-  .modal-card p {
-    font-size: 0.78rem !important;
-    margin-top: 0.15rem !important;
-    margin-bottom: 0.15rem !important;
-    line-height: 1.2 !important;
+
+  .modal-card-row .modal-match-subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.22 !important;
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .modal-card:not(.modal-card-row) {
+    width: min(90vw, 340px) !important;
+    max-width: 340px !important;
+    padding: 0.55rem 1rem !important;
+  }
+
+  .modal-card:not(.modal-card-row) .modal-standard-img {
+    max-height: 75px !important;
   }
 }
+
+
+
+
 
 
 
