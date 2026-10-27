@@ -193,3 +193,40 @@
   }
 }
 
+/* Pantallas grandes y Desktop */
+@media (min-width: 1024px) and (min-height: 560px) {
+  .consejos-screen {
+    padding: 0 3rem 3rem;
+  }
+
+  .consejos-content-container {
+    max-width: 1040px;
+  }
+
+  .consejos-tab {
+    font-size: 1.5rem;
+    padding: 0.55rem 3.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .consejos-title {
+    font-size: 1.45rem;
+  }
+
+  .consejos-logo {
+    height: 3.5rem;
+  }
+
+  .consejos-exclamation {
+    font-size: 3.6rem;
+  }
+
+  .consejos-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .consejos-list {
+    gap: 1.35rem;
+  }
+}
+
